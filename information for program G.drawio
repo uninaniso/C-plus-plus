@@ -1,9 +1,58 @@
-<mxfile host="app.diagrams.net" modified="2023-09-07T17:15:21.335Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0" version="21.3.3" etag="el_989K7pmQf4TtIIgUe" type="github">
+<mxfile host="app.diagrams.net" modified="2023-09-07T17:33:26.796Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0" etag="qoAQh8wvyt0OpieQc4oP" version="21.3.3" type="github">
   <diagram name="Страница 1" id="OWC0lmn7g0es4ZwRftjZ">
-    <mxGraphModel>
+    <mxGraphModel dx="1462" dy="621" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="24-YC4noKM_9JgD1H4YL-6" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry width="430" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="24-YC4noKM_9JgD1H4YL-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="24-YC4noKM_9JgD1H4YL-8">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="220" y="70" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="215" y="70" />
+              <mxPoint x="80" y="70" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24-YC4noKM_9JgD1H4YL-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="24-YC4noKM_9JgD1H4YL-7" target="24-YC4noKM_9JgD1H4YL-11">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="75" />
+              <mxPoint x="335" y="75" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24-YC4noKM_9JgD1H4YL-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.875;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="24-YC4noKM_9JgD1H4YL-7" target="24-YC4noKM_9JgD1H4YL-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="24-YC4noKM_9JgD1H4YL-7" value="MyHouse" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="155" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="24-YC4noKM_9JgD1H4YL-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="24-YC4noKM_9JgD1H4YL-8" target="24-YC4noKM_9JgD1H4YL-13">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="80" y="190" />
+              <mxPoint x="215" y="190" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="24-YC4noKM_9JgD1H4YL-8" value="House of my friend_A" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="24-YC4noKM_9JgD1H4YL-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="24-YC4noKM_9JgD1H4YL-11" target="24-YC4noKM_9JgD1H4YL-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="24-YC4noKM_9JgD1H4YL-11" value="House of my friend_B" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="275" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="24-YC4noKM_9JgD1H4YL-13" value="His has a new house at New York City" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="155" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="24-YC4noKM_9JgD1H4YL-17" value="New&lt;div&gt;house of at Ohio&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="310" width="120" height="60" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
