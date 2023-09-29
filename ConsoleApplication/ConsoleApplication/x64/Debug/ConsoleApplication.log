@@ -1,0 +1,6 @@
+﻿  ConsoleApplication.cpp
+C:\D\Projects\Code\C++\ConsoleApplication\ConsoleApplication\ConsoleApplication.cpp(148,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+C:\D\Projects\Code\C++\ConsoleApplication\ConsoleApplication\ConsoleApplication.cpp(279,32): warning C4834: отмена возвращаемого значения функции с атрибутом "nodiscard"
+C:\D\Projects\Code\C++\ConsoleApplication\ConsoleApplication\ConsoleApplication.cpp(382,32): warning C4834: отмена возвращаемого значения функции с атрибутом "nodiscard"
+C:\D\Projects\Code\C++\ConsoleApplication\ConsoleApplication\ConsoleApplication.cpp(107): warning C4715: BankAccount::Withdraw: значение возвращается не при всех путях выполнения
+  ConsoleApplication.vcxproj -> C:\D\Projects\Code\C++\ConsoleApplication\x64\Debug\ConsoleApplication.exe
