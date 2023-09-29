@@ -1,0 +1,5 @@
+﻿  ConsoleApplication.cpp
+C:\D\Projects\Code\C++\ConsoleApplication\ConsoleApplication\ConsoleApplication.cpp(41,12): warning C4305: =: усечение из "double" в "float"
+C:\D\Projects\Code\C++\ConsoleApplication\ConsoleApplication\ConsoleApplication.cpp(60,12): warning C4305: =: усечение из "double" в "float"
+C:\D\Projects\Code\C++\ConsoleApplication\ConsoleApplication\ConsoleApplication.cpp(87,12): warning C4305: =: усечение из "double" в "float"
+  ConsoleApplication.vcxproj -> C:\D\Projects\Code\C++\ConsoleApplication\x64\Debug\ConsoleApplication.exe
