@@ -1,0 +1,2 @@
+﻿  ConsoleApplication.cpp
+LINK : fatal error LNK1168: не удается открыть C:\D\Projects\Code\C++\ConsoleApplication\x64\Debug\ConsoleApplication.exe для записи
