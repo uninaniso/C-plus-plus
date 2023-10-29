@@ -1,0 +1,3 @@
+﻿  ConsoleApplication4.cpp
+C:\D\Projects\Code\C++\ConsoleApplication4\ConsoleApplication4\ConsoleApplication4.cpp(61,42): warning C4244: =: преобразование "double" в "unsigned int", возможна потеря данных
+  ConsoleApplication4.vcxproj -> C:\D\Projects\Code\C++\ConsoleApplication4\x64\Debug\ConsoleApplication4.exe
