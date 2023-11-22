@@ -1,6 +1,0 @@
-﻿  ConsoleApplication6.cpp
-C:\D\Projects\Code\C++\ConsoleApplication6\ConsoleApplication6\ConsoleApplication6.cpp(45): warning C4715: Month::DayInfo: значение возвращается не при всех путях выполнения
-C:\D\Projects\Code\C++\ConsoleApplication6\ConsoleApplication6\ConsoleApplication6.cpp(55): warning C4715: Month::ShowTime: значение возвращается не при всех путях выполнения
-C:\D\Projects\Code\C++\ConsoleApplication6\ConsoleApplication6\ConsoleApplication6.cpp(30): warning C4715: Time::Show: значение возвращается не при всех путях выполнения
-C:\D\Projects\Code\C++\ConsoleApplication6\ConsoleApplication6\ConsoleApplication6.cpp(23): warning C4715: Time::start: значение возвращается не при всех путях выполнения
-  ConsoleApplication6.vcxproj -> C:\D\Projects\Code\C++\ConsoleApplication6\x64\Debug\ConsoleApplication6.exe
