@@ -5,28 +5,28 @@
 using namespace std;
 
 class Time {
-    string hourse;
-    string minets;
+    string hours;
+    string minutes;
     bool madeDelete = true;
 
 public:
-    string start(int hourse, int minets) {
+    string start(int hours, int minutes) {
         if (madeDelete) {
-            if (hourse <= 23 && minets <= 60) {
-                this->hourse = to_string(hourse);
-                this->minets = to_string(minets);
-                if (hourse < 10) this->hourse = "0" + this->hourse;
-                if (minets < 10) this->minets = "0" + this->minets;
+            if (hours <= 23 && minutes <= 59) {
+                this->hours = to_string(hours);
+                this->minutes = to_string(minutes);
+                if (hours < 10) this->hours = "0" + this->hours;
+                if (minutes < 10) this->minutes = "0" + this->minutes;
                 madeDelete = false;
-                return this->hourse + ":" + this->minets;
+                return this->hours + ":" + this->minutes;
             }
             madeDelete = false;
         }
-        return "";
+        return this->hours + ":" + this->minutes;
     }
 
     string Show() {
-        return this->hourse + ':' + this->minets;
+        return this->hours + ':' + this->minutes;
     }
 };
 
@@ -34,7 +34,7 @@ class Month {
     Time time;
     int day;
     string nameMonth;
-    bool madeDelete;
+    bool madeDelete = true;
 
 public:
 
@@ -50,11 +50,11 @@ public:
         return time.Show();
     }
 
-    void start(int day, int hourse, int minets) {
+    void start(int day, int hours, int minutes) {
         if (madeDelete) {
             if (day >= 1 && day <= 30) {
                 this->day = day;
-                time.start(hourse, minets);
+                time.start(hours, minutes);
             }
         }
         madeDelete = false;
@@ -106,7 +106,7 @@ public:
             break;
 
         default:
-            nameMonth = "Jenuary";
+            nameMonth = "January";
             break;
         }
     }
@@ -118,12 +118,8 @@ class Year {
     int year;
 
 public:
-    string Info() {
-        //cout << "1. " << m[nm - 1].DayInfo() << '.' << nm << "." << year << endl;
-        //cout << "2. day " << m[nm - 1].DayInfo() << " month " << m[nm - 1].NameMonth() << " year " << year << endl;
-
-        //cout << m[nm - 1].ShowTime();
-
+    string Info(int infoMonthDates[12][100], int quantityDates) {
+        infoMonthDates[nm - 1][quantityDates] = quantityDates + 1;
         return to_string(m[nm - 1].DayInfo()) + '.' + to_string(nm) + '.' + to_string(year) + '\n' + m[nm - 1].ShowTime();
     }
 
@@ -139,16 +135,16 @@ public:
         cout << "day:";
         cin >> day;
 
-        int hourse;
-        cout << "hourse:";
-        cin >> hourse;
+        int hours;
+        cout << "hours:";
+        cin >> hours;
 
-        int minets;
-        cout << "minets:";
-        cin >> minets;
+        int minutes;
+        cout << "minutes:";
+        cin >> minutes;
 
         if (month >= 1 && month <= 12) {
-            m[month - 1].start(day, hourse, minets);
+            m[month - 1].start(day, hours, minutes);
             nm = month;
         }
         else {
@@ -159,31 +155,40 @@ public:
 };
 
 class Book {
+    int infoMonthDates[12][100] = {};
     string infoDates[100];
     int quantityDates = 0;
 
     string GetAllInfo(Year year) {
-        return year.Info();
+        return year.Info(infoMonthDates, quantityDates);
     }
 
 public:
-
     void AddDates() {
         quantityDates++;
         Year year;
-        infoDates[quantityDates] = GetAllInfo(year);
+        infoDates[quantityDates - 1] = GetAllInfo(year);
     }
 
     int AllDates() {
         for (int i = 0; i < quantityDates; i++) {
             cout << "date " << i << infoDates[i] << endl;
         }
-        return quantityDates + 1;
+        return quantityDates;
+    }
+
+    void SearchByMonth(int month) {
+        for (int i = 0; i < quantityDates; i++) {
+            if (infoMonthDates[month - 1][i] != 0) {
+                cout << "Month " << month << endl;
+                cout << "Date " << infoMonthDates[month - 1][i] << endl;
+            }
+        }
     }
 
     string Show(int num) const {
-        cout << infoDates[num];
-        return infoDates[num];
+        cout << infoDates[num - 1];
+        return infoDates[num - 1];
     }
 
     Book() {
@@ -194,10 +199,10 @@ public:
 
 int main() {
     Book a;
-    int i = 1;
+    int i = 99;
     while (i != 0) {
-        cout << "close program - 0, add new date - 1, show date - 2, all date - 3" << endl;
-        cout << "in@user:";
+        cout << "close program - 0, add new date - 1, show date - 2, all date - 3, search by month - 4" << endl;
+        cout << "in@user$:";
         cin >> i;
 
         switch (i) {
@@ -208,15 +213,24 @@ int main() {
             int ia;
             cout << "number date:";
             cin >> ia;
-            a.Show(ia + 1);
-            Sleep(5000);
+            a.Show(ia);
             break;
         case 3:
             ia = a.AllDates();
             cout << "all number dates " << ia;
-            Sleep(5000);
+            break;
+        case 4:
+            int ii = 1;
+            cout << "number month:";
+            cin >> ii;
+            a.SearchByMonth(ii);
             break;
         }
+
+        int p;
+        cout << "\npress enter ";
+        cin >> p;
+
         system("cls");
     }
 }
