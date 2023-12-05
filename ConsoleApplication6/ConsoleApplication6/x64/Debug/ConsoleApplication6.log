@@ -1,0 +1,4 @@
+﻿  ConsoleApplication6.cpp
+C:\D\Projects\Code\C++\ConsoleApplication6\ConsoleApplication6\ConsoleApplication6.cpp(31,46): warning C4244: return: преобразование "double" в "int", возможна потеря данных
+ConsoleApplication6.obj : error LNK2001: неразрешенный внешний символ "public: static int Bot::numBot" (?numBot@Bot@@2HA).
+C:\D\Projects\Code\C++\ConsoleApplication6\x64\Debug\ConsoleApplication6.exe : fatal error LNK1120: неразрешенных внешних элементов: 1
