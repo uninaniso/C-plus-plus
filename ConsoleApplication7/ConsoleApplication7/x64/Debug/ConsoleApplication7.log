@@ -1,0 +1,3 @@
+﻿  ConsoleApplication7.cpp
+C:\D\Projects\Code\C++\ConsoleApplication7\ConsoleApplication7\ConsoleApplication7.cpp(70,55): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+  ConsoleApplication7.vcxproj -> C:\D\Projects\Code\C++\ConsoleApplication7\x64\Debug\ConsoleApplication7.exe
