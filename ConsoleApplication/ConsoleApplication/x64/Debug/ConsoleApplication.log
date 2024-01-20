@@ -1,2 +1,16 @@
 ﻿  ConsoleApplication.cpp
-LINK : fatal error LNK1168: не удается открыть C:\D\Projects\Code\C++\ConsoleApplication\x64\Debug\ConsoleApplication.exe для записи
+D:\Projects\github\Black-Jack\ConsoleApplication\ConsoleApplication\ConsoleApplication.cpp(131,17): warning C4838: Преобразование из "int" в "char" требует сужающего преобразования.
+D:\Projects\github\Black-Jack\ConsoleApplication\ConsoleApplication\ConsoleApplication.cpp(131,17): warning C4309: инициализация: усечение константного значения
+D:\Projects\github\Black-Jack\ConsoleApplication\ConsoleApplication\ConsoleApplication.cpp(131,22): warning C4838: Преобразование из "int" в "char" требует сужающего преобразования.
+D:\Projects\github\Black-Jack\ConsoleApplication\ConsoleApplication\ConsoleApplication.cpp(131,22): warning C4309: инициализация: усечение константного значения
+D:\Projects\github\Black-Jack\ConsoleApplication\ConsoleApplication\ConsoleApplication.cpp(131,27): warning C4838: Преобразование из "int" в "char" требует сужающего преобразования.
+D:\Projects\github\Black-Jack\ConsoleApplication\ConsoleApplication\ConsoleApplication.cpp(131,27): warning C4309: инициализация: усечение константного значения
+D:\Projects\github\Black-Jack\ConsoleApplication\ConsoleApplication\ConsoleApplication.cpp(131,32): warning C4838: Преобразование из "int" в "char" требует сужающего преобразования.
+D:\Projects\github\Black-Jack\ConsoleApplication\ConsoleApplication\ConsoleApplication.cpp(131,32): warning C4309: инициализация: усечение константного значения
+D:\Projects\github\Black-Jack\ConsoleApplication\ConsoleApplication\ConsoleApplication.cpp(131,37): warning C4838: Преобразование из "int" в "char" требует сужающего преобразования.
+D:\Projects\github\Black-Jack\ConsoleApplication\ConsoleApplication\ConsoleApplication.cpp(131,37): warning C4309: инициализация: усечение константного значения
+D:\Projects\github\Black-Jack\ConsoleApplication\ConsoleApplication\ConsoleApplication.cpp(131,42): warning C4838: Преобразование из "int" в "char" требует сужающего преобразования.
+D:\Projects\github\Black-Jack\ConsoleApplication\ConsoleApplication\ConsoleApplication.cpp(131,42): warning C4309: инициализация: усечение константного значения
+D:\Projects\github\Black-Jack\ConsoleApplication\ConsoleApplication\ConsoleApplication.cpp(455,1): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+D:\Projects\github\Black-Jack\ConsoleApplication\ConsoleApplication\ConsoleApplication.cpp(456,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  ConsoleApplication.vcxproj -> D:\Projects\github\Black-Jack\ConsoleApplication\x64\Debug\ConsoleApplication.exe
