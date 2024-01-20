@@ -1,238 +1,137 @@
 ﻿#include <iostream>
 #include <vector>
-#include <mutex>
-#include <future>
-#include <chrono>
+#include <string>
 #include <thread>
 
 using namespace std;
 
-class Calculator {
-    vector<string> history;
-    vector<int> resultHistory;
-    vector<float> duration;
+class ExpressionSolver {
+    vector<int> num;
+    vector<char> nameNum;
+    string letterSymbol;
+    string letter = "";
+    string symbol = "";
 
-    static mutex calcMutex;
-
-    static inline int Plus(const int number1, const int number2) { return number1 + number2; }
-    static inline int Minus(const int number1, const int number2) { return number1 - number2; }
-    static inline int Division(const int number1, const int number2) { return number1 / number2; }
-    static inline int Multiplication(const int number1, const int number2) { return number1 * number2; }
-    static inline int Percent(const int number1, const int number2) { return number1 % number2; }
-
-    static void checkLetterOrSpace(string& info) {
-        string letterOrSymbol = "qwertyuiop[]|asdfghjkl;'zxcvbnm,.:<>?,{}~!@#$%^&()_^$!`№QWERTYUIOPASDFGHJKLZXCVBNM ";
-
-        for (const char& c : letterOrSymbol) {
-            info.erase(remove(info.begin(), info.end(), c), info.end());
+    void find(vector<char>& info, int q, string& mathInfo) {
+        for (int i = 0; i < mathInfo.size(); i++) {
+            for (int p = 0; p < info.size(); p++) {
+                if (mathInfo[i] == info[p]) {
+                    if (q == 1) {
+                        this->letter += info[p];
+                    }
+                    else {
+                        this->symbol += info[p];
+                    }
+                }
+            }
         }
-    }
-
-    static int decryption(int* number1, int* number2, int* i, const string& info) {
-        string str = "";
-
-        while (*i < info.size() && info[*i] != '-' && info[*i] != '+' && info[*i] != '/' && info[*i] != '*' && info[*i] != '%') {
-            str += info[*i];
-            (*i)++;
-        }
-
-        *number1 = stoi(str);
-
-        str = "";
-
-        const int m = *i;
-
-        (*i)++;
-
-        while (*i < info.size()) {
-            str += info[*i];
-            (*i)++;
-        }
-
-        *number2 = stoi(str);
-
-        return m;
     }
 
 public:
-    inline string GetTheLatestHistory() const { return history.empty() ? "" : history.back(); }
+    void Math() {
+        string letter = "abcdefghij";
+        string symbol = "-+/*(";
 
-    inline int GetTheLatestResultHistory() const { return resultHistory.empty() ? 0 : resultHistory.back(); }
+        bool scope = false;
+        char afr = '\0';
 
-    inline float GetTheLatestDuration() const { return duration.empty() ? 0.0f : duration.back(); }
+        // Определение используемых переменных в выражении
+        vector<char> usedVariables;
+        cout << "Введите математическое выражение: ";
+        string mathInfo;
+        getline(cin, mathInfo);
 
-    void AllHistory() {
-        for (int i = 0; i < history.size(); i++) {
-            cout << "history" << "     " << "result history" << "     " << "duration" << endl;
-            cout << history[i] << "     " << resultHistory[i] << "     " << duration[i] << endl;
+        for (char var : letter) {
+            if (mathInfo.find(var) != string::npos) {
+                usedVariables.push_back(var);
+            }
         }
 
-        this_thread::sleep_for(chrono::seconds(5));
-    }
+        // Ввод значений только для используемых переменных
+        vector<int> values;
+        for (char var : usedVariables) {
+            int value;
+            cout << "Введите " << var << ": ";
+            cin >> value;
+            values.push_back(value);
+        }
 
-    int Math(const string& mathInfo) {
-        auto start_time_point = chrono::steady_clock::now();
+        // Очистим буфер ввода
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-        int i = 0;
-        int number1, number2;
-        checkLetterOrSpace(const_cast<string&>(mathInfo));
+        thread findSymbol(&ExpressionSolver::find, this, ref(usedVariables), 1, ref(mathInfo));
 
-        const int m = decryption(&number1, &number2, &i, mathInfo);
+        findSymbol.join();
 
-        {
-            lock_guard<mutex> lock(calcMutex);
+        if (this->letter.empty()) {
+            cout << "Ошибка: недостаточно данных для вычисления." << endl;
+            return;
+        }
 
-            switch (mathInfo[m]) {
-            case '-':
-                resultHistory.push_back(Minus(number1, number2));
+        thread inputNum([&]() {
+            int num = 1;
+            for (int i = 0; i < this->letter.size(); i++) {
+                this->nameNum.push_back(this->letter[i]);
+
+                cout << "Введите " << this->letter[i] << ": ";
+                cin >> num;
+                this->num.push_back(num);
+            }
+            });
+
+        this->letterSymbol = this->letter + this->symbol;
+
+        thread findScope([&]() {
+            for (char var : this->symbol) {
+                if (var == '(') {
+                    scope = true;
+                    break;
+                }
+            }
+            });
+
+        for (int i = 0; i < this->symbol.size(); i++) {
+            if (this->symbol[i] == '-') {
+                afr = '-';
                 break;
-            case '+':
-                resultHistory.push_back(Plus(number1, number2));
+            }
+            else if (this->symbol[i] == '+') {
+                afr = '+';
                 break;
-            case '/':
-                resultHistory.push_back(Division(number1, number2));
+            }
+            else if (this->symbol[i] == '/') {
+                afr = '/';
                 break;
-            case '*':
-                resultHistory.push_back(Multiplication(number1, number2));
+            }
+            else if (this->symbol[i] == '*') {
+                afr = '*';
                 break;
-            case '%':
-                resultHistory.push_back(Percent(number1, number2));
-                break;
-            default:
-                return 0;
+            }
+        }
+        findScope.join();
+        inputNum.join();
+
+        // Обработка введенного математического выражения
+        if (!this->num.empty()) {
+            int result = 0;
+
+            for (int i = 0; i < this->num.size(); i++) {
+                result += values[i] * this->num[i];
             }
 
-            history.push_back(to_string(number1) + mathInfo[m] + to_string(number2) + "=" + to_string(resultHistory.back()));
+            cout << "Результат: " << result << endl;
         }
-
-        auto end_time_point = chrono::steady_clock::now();
-        auto d = chrono::duration_cast<chrono::microseconds>(end_time_point - start_time_point);
-        duration.push_back(static_cast<float>(d.count()));
-
-        return resultHistory.back();
-    }
-    
-    Calculator(const string& mathInfo) {
-        try {
-            if (mathInfo.empty()) throw runtime_error("Input data was empty");
-            Math(mathInfo);
+        else {
+            cout << "Ошибка: недостаточно данных для вычисления." << endl;
         }
-        catch (const exception&) {}
-    }
-
-    Calculator() {}
-};
-
-mutex Calculator::calcMutex;
-
-
-class Display {
-    static mutex displayMutex;
-
-    static bool checkNumberAndSymbol(const string& info) {
-        const string number = "1234567890";
-        const string symbol = "-+/*%";
-
-        bool numbers = any_of(info.begin(), info.end(), [&](char c) {
-            return number.find(c) != string::npos;
-            });
-
-        bool symbols = any_of(info.begin(), info.end(), [&](char c) {
-            return symbol.find(c) != string::npos;
-            });
-
-        return numbers && symbols;
-    }
-
-public:
-    void OutputToTheScreen(string result) {
-        lock_guard<mutex> lock(displayMutex);
-        system("cls");
-
-        cout << "________________________\n";
-        cout << result << endl;
-        cout << "_________________________\n";
-        cout << "|  7  |  8  |  9  |  /  |\n";
-        cout << "|-----------------------|\n";
-        cout << "|  4  |  5  |  6  |  *  |\n";
-        cout << "|-----------------------|\n";
-        cout << "|  1  |  2  |  3  |  -  |\n";
-        cout << "|-----------------------|\n";
-        cout << "|  0  |  +  |  =  |  C  |\n";
-        cout << "-------------------------\n";
-    }
-
-    string OutputToTheScreen() {
-        lock_guard<mutex> lock(displayMutex);
-        system("cls");
-
-        cout << "________________________\n";
-        cout << "        HOLD ON         \n";
-        cout << "_________________________\n";
-        cout << "|  7  |  8  |  9  |  /  |\n";
-        cout << "|-----------------------|\n";
-        cout << "|  4  |  5  |  6  |  *  |\n";
-        cout << "|-----------------------|\n";
-        cout << "|  1  |  2  |  3  |  -  |\n";
-        cout << "|-----------------------|\n";
-        cout << "|  0  |  +  |  =  |  C  |\n";
-        cout << "-------------------------\n";
-
-        string input;
-        while (!checkNumberAndSymbol(input)) {
-            input = "";
-            cout << "\ninput ";
-            cin >> input;
-        }
-
-        return input;
     }
 };
-
-mutex Display::displayMutex;
 
 int main() {
-    int input;
+    setlocale(LC_ALL, "Russian");
 
-    Display display = {};
-    Calculator calculator = {};
-
-    while (true) {
-        system("cls");
-
-        cout << "command ";
-        while (!(cin >> input) || (input < 1 || input > 6)) {
-            cin.clear();
-            cin.ignore(2147483647, '\n');
-            cout << "Invalid input. Enter a valid command (1-6): ";
-        }
-
-        switch (input) {
-
-        case 1: {
-            string result = display.OutputToTheScreen();
-            calculator.Math(result);
-            display.OutputToTheScreen(result);
-
-            string s;
-            cin >> s;
-            break;
-        }
-
-        case 2:
-            calculator.AllHistory();
-            break;
-
-        case 3:
-            calculator.GetTheLatestHistory();
-            break;
-
-        case 4:
-            calculator.GetTheLatestResultHistory();
-            break;
-
-        }
-    }
+    ExpressionSolver solver;
+    solver.Math();
 
     return 0;
 }
