@@ -2,7 +2,11 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
+<<<<<<< Updated upstream
       <FullPath>C:\Users\arthu\code\C++\ConsoleApplication7\x64\Debug\ConsoleApplication7.exe</FullPath>
+=======
+      <FullPath>C:\Users\arthu\source\repos\C++\ConsoleApplication7\x64\Debug\ConsoleApplication7.exe</FullPath>
+>>>>>>> Stashed changes
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
